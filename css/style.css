@@ -1,8 +1,9 @@
 :root {
   --dukaan-blue-800: #1e2640;
-  --dukaan-blue-600: #146eb4;
+  --dukaan-blue-600: #0e4f82;
   --dukaan-blue-400: #146eb4;
 
+  --dukaan-gray-800: #4d4d4d;
   --dukaan-gray-700: #3f3f46;
   --dukaan-gray-600: #71717a;
   --dukaan-gray-300: #ccc;
@@ -31,6 +32,8 @@ body {
 }
 
 aside {
+  position: sticky;
+  inset: 0;
   width: 224px;
   background-color: var(--dukaan-blue-800);
   height: 100dvh;
@@ -130,9 +133,43 @@ aside {
   overflow: auto;
 }
 
+.mobile-screen {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
-  aside {
+  /* aside {
     width: 100vw;
+  } */
+
+  .main {
+    display: none;
+  }
+
+  .mobile-screen {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100dvh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .mobile-screen a {
+    color: #f97316;
+    font-weight: 500;
+  }
+
+  .mobile-screen .desc {
+    margin-top: auto;
+  }
+
+  .mobile-screen .portfolio {
+    margin-top: auto;
   }
 }
 
@@ -177,6 +214,7 @@ aside {
   width: 400px;
   border-radius: 8px;
   background-color: var(--dukaan-gray-100);
+  color: var(--dukaan-gray-600);
 }
 
 .header__search .search__box input {
@@ -234,6 +272,262 @@ aside {
   color: var(--dukaan-gray-700);
 }
 
+.overview-cards {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.cards__card {
+  padding: 24px 20px;
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: fit-content;
+  position: relative;
+}
+
+.cards__card .card__header {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  color: var(--dukaan-gray-700);
+}
+
+.cards__card .card__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards__card .card__body .amount {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.cards__card .card__body .info {
+  display: flex;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dukaan-blue-400);
+  cursor: pointer;
+}
+
+.card__body .info .info__text {
+  text-decoration: underline;
+}
+
+.card__body .info svg {
+  margin-top: 2px;
+  rotate: 270deg;
+}
+
+.active-card {
+  padding: 24px 0 0;
+  background: var(--dukaan-blue-400);
+  color: white;
+  width: 100%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: fit-content;
+}
+
+.active-card .card__body,
+.active-card .card__header {
+  padding: 0 20px;
+}
+
+.active-card .card__header {
+  display: flex;
+  gap: 6px;
+  font-weight: 300;
+  align-items: center;
+}
+
+.active-card .card__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active-card .card__body .amount {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.active-card .card__body .info {
+  display: flex;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.active-card .card__next {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 300;
+  border-radius: 8px;
+  background-color: var(--dukaan-blue-600);
+}
+
+.transactions {
+  padding: 0px 32px;
+}
+
+.transactions .transactions__title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.transactions .transactions__filters {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+}
+
+.transactions .transactions__filters div {
+  padding: 6px 14px;
+  background-color: var(--dukaan-gray-200);
+  border-radius: 200px;
+  font-size: 14px;
+  color: var(--dukaan-gray-600);
+}
+
+.transactions .transactions__table {
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.transactions .transactions__table .table__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transactions__table .table__header .table__search {
+  padding: 6px 8px 6px 12px;
+  border: 1px solid var(--dukaan-gray-300);
+  border-radius: 4px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  width: 240px;
+  color: var(--dukaan-gray-600);
+}
+
+.table__header .table__search input {
+  padding: 4px 0;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.table__header .table__search input::placeholder {
+  color: var(--dukaan-gray-600);
+}
+
+.transactions__table .table__header .table__actions {
+  display: flex;
+  gap: 20px;
+}
+
+.transactions__table .table__header .table__actions div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--dukaan-gray-300);
+  border-radius: 4px;
+  background-color: white;
+  color: var(--dukaan-gray-700);
+}
+
+.transactions__table .table-wrapper {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.transactions__table .table-wrapper table {
+  width: 100%;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+
+.table-wrapper table thead {
+  background-color: var(--dukaan-gray-100);
+  color: var(--dukaan-gray-600);
+  font-weight: 400;
+  text-align: left;
+}
+
+.table-wrapper table thead tr th {
+  padding: 14px 12px;
+  font-weight: 500;
+  color: var(--dukaan-gray-800);
+}
+
+.table-wrapper table thead th:last-child,
+table tbody td:last-child {
+  text-align: right;
+}
+
+.table-wrapper table tbody tr {
+  border-bottom: 2px solid var(--dukaan-gray-100);
+}
+
+.table-wrapper table tbody tr:last-child {
+  border: 0;
+}
+
+.table-wrapper table tbody tr td {
+  padding: 14px 12px;
+}
+
+.td-date {
+  color: var(--dukaan-blue-400);
+  font-weight: 500;
+}
+
+.td-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.td-trans,
+.td-total {
+  color: var(--dukaan-gray-800);
+}
+
+.status-processing {
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+  background-color: #999;
+}
+
+.status-success {
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+  background-color: #17b31b;
+}
+
 /* SVGS*/
 .svg-search-icon {
   color: var(--dukaan-gray-600);
@@ -246,4 +540,13 @@ aside {
 
 .svg-chevron-down-icon {
   stroke-width: 3px;
+}
+
+.svg-chevron-right-icon {
+  stroke-width: 4px;
+}
+
+.svg-download-tray-icon {
+  height: 22px;
+  width: 22px;
 }
